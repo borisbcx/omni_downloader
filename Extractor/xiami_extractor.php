@@ -1,7 +1,7 @@
 <?php
-include_once('../Utility/http.php');
-include_once('../Result/xiami_result.php');
-include_once('../Extractor/extractor.php');
+include_once(__DIR__.'/../Utility/http.php');
+include_once(__DIR__.'/../Result/xiami_result.php');
+include_once(__DIR__.'/../Extractor/extractor.php');
 class XiamiExtractor extends Extractor{
 	function __construct()
 	{
@@ -26,9 +26,9 @@ class XiamiExtractor extends Extractor{
 		preg_match('/www.xiami.com\/album\/([0-9]+)$/', $url, $match);
 		if(count($match) > 1)
 			return $match[1];
-		echo microtime(true)."<br>";
+		// echo microtime(true)."<br>";
 		$file = $this->http->get($url);
-		echo microtime(true)."<br>";
+		// echo microtime(true)."<br>";
 		preg_match('/rel="canonical" href="http:\/\/www.xiami.com\/album\/([0-9]+)"/', $file, $match);
 		return $match[1];		
 	}

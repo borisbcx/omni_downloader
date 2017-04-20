@@ -18,7 +18,7 @@ define ('UPDATE_LOG', "
 	</ol>
 <ul>
 ");
-$VISITOR_MAX = 20;
+$key = isset($_POST['key']) ? $_POST['key'] : '';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -99,10 +99,9 @@ function showHide(shID) {
 		</div>
 </form>
 <?php
-$key = isset($_POST['key']) ? $_POST['key'] : '';
 if ($_SERVER["REQUEST_METHOD"] == "POST" && $key != "") {
-	//test xiami
-	preg_match('/xiami.com\/([a-z]+)\//', $key, $match);	
+	//search xiami
+	preg_match('/xiami.com\/([a-z]+)\//', $key, $match);
 	if(count($match) > 1)
 	{
 		$xe = new XiamiExtractor();
